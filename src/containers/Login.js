@@ -1,43 +1,29 @@
 import React, { useState } from "react";
-import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import { Button, FormGroup, FormControl, ControlLabel, Modal } from "react-bootstrap";
 import "./Login.css";
 
-export default function Login(props) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+export default function() {
+  const [show, setShow] = useState(false);
 
-  function validateForm() {
-    return email.length > 0 && password.length > 0;
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault();
-  }
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
-    <div className="Login">
-      <form onSubmit={handleSubmit}>
-        <FormGroup controlId="email" bsSize="large">
-          <ControlLabel>Email</ControlLabel>
-          <FormControl
-            autoFocus
-            type="email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-          />
-        </FormGroup>
-        <FormGroup controlId="password" bsSize="large">
-          <ControlLabel>Password</ControlLabel>
-          <FormControl
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-            type="password"
-          />
-        </FormGroup>
-        <Button block bsSize="large" disabled={!validateForm()} type="submit">
-          Login
-        </Button>
-      </form>
-    </div>
+    <>
+      <Modal show={handleShow} onHide={handleClose} animation={false}>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
   );
 }

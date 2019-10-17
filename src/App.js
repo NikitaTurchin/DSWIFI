@@ -11,15 +11,12 @@ function App(props) {
       <Navbar fluid collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
-            <Link to="/">Scratch</Link>
+            <Link to="/">Delta Solutions Wi-Fi</Link>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav pullRight>
-            <LinkContainer to="/signup">
-              <NavItem>Signup</NavItem>
-            </LinkContainer>
             <LinkContainer to="/login">
               <NavItem>Login</NavItem>
             </LinkContainer>

@@ -1,10 +1,10 @@
 import React from "react";
 import "./NotFound.css";
 
-export default function NotFound() {
+export default function() {
   return (
     <div className="NotFound">
-      <h3>Sorry, page not found!</h3>
+      <h1>Error 404. Sorry, page not found!</h1>
     </div>
   );
 }
