@@ -1,10 +1,10 @@
-import React from "react";
-import { Route, Switch } from "react-router-dom";
+import React, {Component} from "react";
+import { Route, Switch, Redirect } from "react-router-dom";
 import Home from "./containers/Home";
 import Login from "./containers/Login";
 import NotFound from "./containers/NotFound";
 
-export default function Routes() {
+export default function() {
   return (
     <Switch>
       <Route path="/" exact component={Home} />

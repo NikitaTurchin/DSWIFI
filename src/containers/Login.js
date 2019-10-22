@@ -1,29 +1,45 @@
 import React, { useState } from "react";
-import { Button, FormGroup, FormControl, ControlLabel, Modal } from "react-bootstrap";
+import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import "./Login.css";
 
-export default function() {
-  const [show, setShow] = useState(false);
+export default function (props) {
+  
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  let loggedIn = false;
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  function handleSubmit(event) {
+    event.preventDefault();
+    if (email === "admin" && password === "admin" && loggedIn === false) {
+      window.location.href='/tables';
+      loggedIn = true;
+    } else return(alert("Wrong Email or Password"));
+  }
 
   return (
-    <>
-      <Modal show={handleShow} onHide={handleClose} animation={false}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </>
+    <div className="Login">
+      <form onSubmit={handleSubmit}>
+        <FormGroup controlId="email" bsSize="large">
+          <ControlLabel>Email</ControlLabel>
+          <FormControl
+            autoFocus
+            type="text"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+          />
+        </FormGroup>
+        <FormGroup controlId="password" bsSize="large">
+          <ControlLabel>Password</ControlLabel>
+          <FormControl
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            type="password"
+          />
+        </FormGroup>
+        <Button block bsSize="large" type="submit">
+          Login
+        </Button>
+      </form>
+    </div>
   );
 }
