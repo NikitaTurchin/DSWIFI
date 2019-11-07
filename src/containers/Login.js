@@ -11,7 +11,7 @@ export default function (props) {
   function handleSubmit(event) {
     event.preventDefault();
     if (email === "admin" && password === "admin" && loggedIn === false) {
-      window.location.href='/tables';
+      window.location.href='/table';
       loggedIn = true;
     } else return(alert("Wrong Email or Password"));
   }
